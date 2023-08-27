@@ -80,13 +80,13 @@ functions:
     handler: src/handlers/TournamentHandler/GetById.handler
     events:
       - http:
-          path: /espcharts/teams/{id}
+          path: /espcharts/tournaments/{id}
           method: get
   getTournamentPages:
     handler: src/handlers/TournamentHandler/GetPages.handler
     events:
       - http:
-          path: /espcharts/teams
+          path: /espcharts/tournaments
           method: get
 
   deleteTournament:
@@ -95,4 +95,3 @@ functions:
       - http:
           path: /espcharts/tournament/{id}
           method: delete
-ddddes

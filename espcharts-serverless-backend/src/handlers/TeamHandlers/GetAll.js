@@ -6,7 +6,7 @@ module.exports.handler = async (event, context) => {
 
   try {
     await connectDatabase();
-    const teamObj = await Player.find();
+    const teamObj = await Team.find();
 
     return {
       headers: {
