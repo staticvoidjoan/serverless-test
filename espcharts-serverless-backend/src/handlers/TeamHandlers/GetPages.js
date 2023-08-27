@@ -1,5 +1,5 @@
 const connectDatabase = require('../../database/dbConfig');
-const Player = require('../../models/Player');
+const  Team = require('../../models/Team');
 
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -10,11 +10,11 @@ module.exports.handler = async (event, context) => {
     const { page, limit } = event.queryStringParameters || {};
     const skip = (parseInt(page) || 1 - 1) * (parseInt(limit) || 10);
 
-    const players = await Player.find({})
+    const teams = await Team.find({})
       .skip(skip)
       .limit(parseInt(limit) || 10);
 
-    if (players.length === 0) {
+    if (teams.length === 0) {
       return {
         statusCode: 404,
         body: JSON.stringify({ message: "No players have been added to the database" }),
@@ -29,7 +29,7 @@ module.exports.handler = async (event, context) => {
 
     },
       statusCode: 200,
-      body: JSON.stringify(players,null, 2),
+      body: JSON.stringify(teams,null, 2),
     };
   } catch (error) {
     console.error(error);

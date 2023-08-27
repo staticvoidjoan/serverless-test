@@ -1,12 +1,12 @@
 const connectDatabase = require("../../database/dbConfig");
-const Player = require("../../models/Player");
+const Tournament = require("../../models/Tournament");
 
 module.exports.handler = async (event, context) => {
   //   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
     await connectDatabase();
-    const playerObj = await Player.find();
+    const tournamentObj = await Tournament.find();
 
     return {
       headers: {
@@ -15,7 +15,7 @@ module.exports.handler = async (event, context) => {
         "Access-Control-Allow-Methods": "*",
       },
       statusCode: 200,
-      body: JSON.stringify(playerObj),
+      body: JSON.stringify(tournamentObj),
     };
   } catch (error) {
     console.error(error);

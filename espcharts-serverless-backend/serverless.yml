@@ -11,6 +11,7 @@ provider:
   stage: ${opt:stage, 'dev'}
 
 functions:
+  #Player functions
   createPlayer:
     handler: src/handlers/PlayerHandlers/Post.handler
     events:
@@ -42,3 +43,56 @@ functions:
       - http:
           path: /espcharts/players/{id}
           method: delete
+  #Team Functions
+  getAllTeams:
+    handler: src/handlers/TeamHandlers/GetAll.handler
+    events:
+      - http:
+          path: /espcharts/allTeams
+          method: get
+  getTeamById:
+    handler: src/handlers/TeamHandlers/GetById.handler
+    events:
+      - http:
+          path: /espcharts/teams/{id}
+          method: get
+  getTeamPages:
+    handler: src/handlers/TeamHandlers/GetPages.handler
+    events:
+      - http:
+          path: /espcharts/teams
+          method: get
+
+  deleteTeam:
+    handler: src/handlers/TeamHandlers/Delete.handler
+    events:
+      - http:
+          path: /espcharts/teams/{id}
+          method: delete
+  #Tournament Functions
+  getAllTournaments:
+    handler: src/handlers/TournamentHandler/GetAll.handler
+    events:
+      - http:
+          path: /espcharts/allTournaments
+          method: get
+  getTournamentById:
+    handler: src/handlers/TournamentHandler/GetById.handler
+    events:
+      - http:
+          path: /espcharts/teams/{id}
+          method: get
+  getTournamentPages:
+    handler: src/handlers/TournamentHandler/GetPages.handler
+    events:
+      - http:
+          path: /espcharts/teams
+          method: get
+
+  deleteTournament:
+    handler: src/handlers/TournamentHandler/Delete.handler
+    events:
+      - http:
+          path: /espcharts/tournament/{id}
+          method: delete
+ddddes

@@ -1,10 +1,10 @@
 const connectDatabase = require('../../database/dbConfig');
-const Player = require('../../models/Player');
+const Team = require('../../models/Team');
 
 module.exports.handler = async (event, context) => {
   try {
     await connectDatabase();
-    const playerObj = await Player.findById(event.pathParameters.id);
+    const teamObj = await Team.findById(event.pathParameters.id);
     return {
       headers: {
         "Content-Type": "application/json",
@@ -12,7 +12,7 @@ module.exports.handler = async (event, context) => {
         "Access-Control-Allow-Methods": "*",
       },
       statusCode: 201,
-      body: JSON.stringify(playerObj.null, 2),
+      body: JSON.stringify(teamObj.null, 2),
     };
   } catch (error) {
     console.error(error);
