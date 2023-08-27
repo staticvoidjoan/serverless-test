@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "country-list": "^2.3.0",
+    "fs": "^0.0.1-security",
+    "graceful-fs": "^4.2.11",
+    "mongodb": "^5.8.1",
+    "mongoose": "^7.4.5",
+    "nodemailer": "^6.9.4",
+    "serverless-dotenv-plugin": "^6.0.0"
+  },
+  "devDependencies": {
+    "serverless-plugin-include-dependencies": "^5.1.0"
+  }
+}

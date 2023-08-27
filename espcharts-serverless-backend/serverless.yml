@@ -1,0 +1,44 @@
+service: espcharts-serverless-backend
+frameworkVersion: "3"
+plugins:
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: joanserv
+  region: eu-north-1
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  createPlayer:
+    handler: src/handlers/PlayerHandlers/Post.handler
+    events:
+      - http:
+          path: /espcharts/players
+          method: post
+  getAllPlayers:
+    handler: src/handlers/PlayerHandlers/GetAll.handler
+    events:
+      - http:
+          path: /espcharts/allPlayers
+          method: get
+  getPlayerById:
+    handler: src/handlers/PlayerHandlers/GetById.handler
+    events:
+      - http:
+          path: /espcharts/players/{id}
+          method: get
+  getPlayerPages:
+    handler: src/handlers/PlayerHandlers/GetPages.handler
+    events:
+      - http:
+          path: /espcharts/players
+          method: get
+
+  deletePlayer:
+    handler: src/handlers/PlayerHandlers/Delete.handler
+    events:
+      - http:
+          path: /espcharts/players/{id}
+          method: delete
