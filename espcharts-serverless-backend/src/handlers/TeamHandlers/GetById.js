@@ -12,7 +12,7 @@ module.exports.handler = async (event, context) => {
         "Access-Control-Allow-Methods": "*",
       },
       statusCode: 201,
-      body: JSON.stringify(teamObj.null, 2),
+      body: JSON.stringify(teamObj),
     };
   } catch (error) {
     console.error(error);

@@ -2,15 +2,15 @@ const mongoose = require("mongoose");
 const playerSchema = mongoose.Schema({
   firstName: {
     type: String,
-    required: true,
+    required: false,
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
   },
   userName: {
     type: String,
-    required: true,
+    required: false,
   },
   gameTitle: {
     type: String,
@@ -22,7 +22,7 @@ const playerSchema = mongoose.Schema({
       "Overwatch",
       "Call Of Duty",
     ],
-    required: true,
+    required: false,
   },
   gameRole: {
     type: String,
@@ -64,11 +64,11 @@ const playerSchema = mongoose.Schema({
   },
   age: {
     type: Number,
-    required: true,
+    required: false,
   },
   country: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 

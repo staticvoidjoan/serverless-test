@@ -4,6 +4,7 @@ const Player = require('../../models/Player');
 module.exports.handler = async (event, context) => {
   try {
     await connectDatabase();
+    const playerId = event.pathParameters.id;
     const playerObj = await Player.findByIdAndDelete(event.pathParameters.id);
     return {
       headers: {

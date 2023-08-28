@@ -1,34 +1,26 @@
-const mongoose = require('mongoose');
 const connectDatabase = require('../../database/dbConfig');
 const Player = require('../../models/Player');
-const cors = require('cors');
 
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
-  try{
-
+  
+  try {
     await connectDatabase();
-    const { firstName, lastName, userName, gameTitle, gameRole, age, country } = JSON.parse(event.body);
+    const teamId = event.pathParameters.id;
+    const updatedTeamData = JSON.parse(event.body);
 
-    let playerObj = {
-      firstName,
-      lastName,
-      userName,
-      gameTitle,
-      gameRole,
-      age,
-      country,
-    };
+    const updatedTeam = await Player.findByIdAndUpdate(teamId, updatedTeamData, {
+      new: true, // This option returns the updated document
+    });
 
-    playerObj = await Player.create(playerObj);
     return {
-      statusCode: 201,
+      statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*', // Replace with your frontend's URL
         'Access-Control-Allow-Credentials': true,
       },
-      body: JSON.stringify(playerObj),
-    }
+      body: JSON.stringify(updatedTeam),
+    };
   } catch (error) {
     console.error(error);
     return {
